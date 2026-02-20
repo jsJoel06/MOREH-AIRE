@@ -20,22 +20,35 @@ import s2 from "./assets/s2.jpg";
 import s3 from "./assets/s3.jpg";
 import video from "./assets/video.mp4";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
    useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth < 1024; // 1024px coincide con 'lg' de Tailwind
+      const mobile = window.innerWidth < 1024; 
       setIsMobile(mobile);
-      if (!mobile) setIsOpen(false); // Cierra el menú si pasamos a escritorio
+      if (!mobile) setIsOpen(false); 
     };
 
     handleResize(); // Ejecutar al montar
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth", // El "estilo" para que baje despacio
+      block: "start",
+    });
+  }
+};
 
   return (
     <>
@@ -188,10 +201,13 @@ function App() {
 
           {/* Bloque de Acción: Botón y Estrellas */}
           <div className="mt-8 flex flex-col md:flex-row items-center gap-6">
-            <button className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 shadow-lg rounded-4xl transition duration-300 flex items-center whitespace-nowrap">
-              Para más información, contáctanos{" "}
-              <GrFormNextLink className="inline-block ml-2 text-xl" />
-            </button>
+           <button 
+  onClick={() => scrollToSection("contactate")} 
+  className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 shadow-lg rounded-4xl transition duration-300 flex items-center whitespace-nowrap cursor-pointer"
+>
+  Para más información, contáctanos{" "}
+  <GrFormNextLink className="inline-block ml-2 text-xl" />
+</button>
 
             {/* Estrellas: Debajo del botón en móvil, al lado en escritorio */}
             <div className="flex text-white">
@@ -538,7 +554,7 @@ function App() {
           </p>
         </div>
       </section>
-      <section className="py-16 px-6 max-w-6xl mx-auto">
+      <section id="contactate" className="py-16 px-6 max-w-6xl mx-auto">
         {/* Encabezado sencillo */}
         <div className="text-center mb-10">
           <h2 className="text-sky-500 font-bold uppercase tracking-widest text-sm mb-2">
