@@ -222,7 +222,7 @@ function App() {
 
       <section
         id="nosotros"
-        className="p-5 mt-5 mx-4 md:mx-10 flex flex-col md:flex-row justify-between items-start gap-10 dark:bg-white"
+        className="p-5  flex flex-col md:flex-row justify-between items-start gap-10 dark:bg-white"
       >
         {/* COLUMNA DE TEXTO */}
         <div className="flex flex-col w-full md:w-1/2">
