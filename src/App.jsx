@@ -23,16 +23,15 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function App() {
-
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-   useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth < 1024; 
+      const mobile = window.innerWidth < 1024;
       setIsMobile(mobile);
-      if (!mobile) setIsOpen(false); 
+      if (!mobile) setIsOpen(false);
     };
 
     handleResize(); // Ejecutar al montar
@@ -41,18 +40,18 @@ function App() {
   }, []);
 
   const scrollToSection = (id) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({
-      behavior: "smooth", // El "estilo" para que baje despacio
-      block: "start",
-    });
-  }
-};
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth", // El "estilo" para que baje despacio
+        block: "start",
+      });
+    }
+  };
 
   return (
     <>
-      <header className=" p-2 shadow-sm flex items-center justify-between">
+      <header className="dark:bg-white p-2 shadow-sm flex items-center justify-between">
         <div className="flex items-center justify-center md:justify-start gap-4">
           {/* Icono */}
           <MdAir className="text-blue-500 text-5xl shrink-0" />
@@ -114,60 +113,60 @@ function App() {
           </div>
         </button>
 
-       <div
-  className={`
+        <div
+          className={`
     fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 
     bg-white/95 backdrop-blur-xl transition-all duration-700 ease-in-out
     ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}
   `}
->
-  {/* Cabecera del Menú Móvil */}
-  <div className="flex flex-col items-center gap-2 mb-4">
-    <MdAir className="text-sky-500 text-6xl animate-pulse" />
-    <h2 className="text-gray-800 text-xl font-black tracking-tighter uppercase">
-      Moreh Aire
-    </h2>
-    <p className="text-sky-600 text-[10px] tracking-[0.3em] uppercase font-bold">
-      Climatización Profesional
-    </p>
-  </div>
+        >
+          {/* Cabecera del Menú Móvil */}
+          <div className="flex flex-col items-center gap-2 mb-4">
+            <MdAir className="text-sky-500 text-6xl animate-pulse" />
+            <h2 className="text-gray-800 text-xl font-black tracking-tighter uppercase">
+              Moreh Aire
+            </h2>
+            <p className="text-sky-600 text-[10px] tracking-[0.3em] uppercase font-bold">
+              Climatización Profesional
+            </p>
+          </div>
 
-  {/* Enlaces de Navegación */}
-  <nav className="flex flex-col items-center gap-6">
-    {[
-      { name: "Inicio", href: "#inicio" },
-      { name: "Nosotros", href: "#nosotros" },
-      { name: "Servicios", href: "#servicios" },
-      { name: "Contacto", href: "#contacto" },
-    ].map((link, index) => (
-      <a
-        key={index}
-        href={link.href}
-        onClick={() => setIsOpen(false)}
-        className="text-gray-700 text-2xl font-bold tracking-tight hover:text-sky-500 transition-all duration-300 relative group"
-      >
-        {link.name}
-        <span className="absolute -bottom-1 left-0 w-0 h-1 bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
-      </a>
-    ))}
-  </nav>
+          {/* Enlaces de Navegación */}
+          <nav className="flex flex-col items-center gap-6">
+            {[
+              { name: "Inicio", href: "#inicio" },
+              { name: "Nosotros", href: "#nosotros" },
+              { name: "Servicios", href: "#servicios" },
+              { name: "Contacto", href: "#contacto" },
+            ].map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-gray-700 text-2xl font-bold tracking-tight hover:text-sky-500 transition-all duration-300 relative group"
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-1 bg-sky-500 transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            ))}
+          </nav>
 
-  {/* Botón de Acción en el Menú */}
-  <a
-    href="tel:+18293738714"
-    className="mt-6 flex items-center gap-3 bg-sky-500 text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-sky-200 active:scale-95 transition-transform"
-  >
-    <FiPhoneCall /> Llamar Ahora
-  </a>
+          {/* Botón de Acción en el Menú */}
+          <a
+            href="tel:+18293738714"
+            className="mt-6 flex items-center gap-3 bg-sky-500 text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-sky-200 active:scale-95 transition-transform"
+          >
+            <FiPhoneCall /> Llamar Ahora
+          </a>
 
-  {/* Footer del Menú */}
-  <div className="absolute bottom-10 flex flex-col items-center gap-2">
-    <div className="w-10 h-[1px] bg-gray-300"></div>
-    <span className="text-gray-400 text-[10px] uppercase tracking-widest font-medium">
-      Punta Cana • Verón
-    </span>
-  </div>
-</div>
+          {/* Footer del Menú */}
+          <div className="absolute bottom-10 flex flex-col items-center gap-2">
+            <div className="w-10 h-[1px] bg-gray-300"></div>
+            <span className="text-gray-400 text-[10px] uppercase tracking-widest font-medium">
+              Punta Cana • Verón
+            </span>
+          </div>
+        </div>
       </header>
 
       <main
@@ -201,13 +200,13 @@ function App() {
 
           {/* Bloque de Acción: Botón y Estrellas */}
           <div className="mt-8 flex flex-col md:flex-row items-center gap-6">
-           <button 
-  onClick={() => scrollToSection("contactate")} 
-  className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 shadow-lg rounded-4xl transition duration-300 flex items-center whitespace-nowrap cursor-pointer"
->
-  Para más información, contáctanos{" "}
-  <GrFormNextLink className="inline-block ml-2 text-xl" />
-</button>
+            <button
+              onClick={() => scrollToSection("contactate")}
+              className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 shadow-lg rounded-4xl transition duration-300 flex items-center whitespace-nowrap cursor-pointer"
+            >
+              Para más información, contáctanos{" "}
+              <GrFormNextLink className="inline-block ml-2 text-xl" />
+            </button>
 
             {/* Estrellas: Debajo del botón en móvil, al lado en escritorio */}
             <div className="flex text-white">
@@ -554,7 +553,11 @@ function App() {
           </p>
         </div>
       </section>
-      <section id="contactate" className="py-16 px-6 max-w-6xl mx-auto">
+
+      <section
+        id="contactate"
+        className="py-16 px-6 max-w-6xl mx-auto dark:bg-white"
+      >
         {/* Encabezado sencillo */}
         <div className="text-center mb-10">
           <h2 className="text-sky-500 font-bold uppercase tracking-widest text-sm mb-2">
